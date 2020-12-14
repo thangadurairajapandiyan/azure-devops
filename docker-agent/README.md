@@ -7,5 +7,5 @@ docker build -t dockeragent:latest .
 
 ### Create Docker container agent
 ```
-docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent dockeragent:latest
+docker run -e AZP_URL=<Azure DevOps instance> -e AZP_TOKEN=<PAT token> -e AZP_AGENT_NAME=mydockeragent -e AZP_POOL=<Agent Pool name> dockeragent:latest
 ```
