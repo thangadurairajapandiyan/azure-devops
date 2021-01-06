@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-agent
+  template:
+    metadata:
+      labels:
+        app: azure-agent
+    spec:
+      securityContext:
+        runAsUser: 1000
+      containers:
+      - name: azure-agent
+        image: azure-agent:latest 
+        env:
+        - name: AZP_URL
+          value: "https://dev.azure.com/vigneshsweekaran"
+        - name: AZP_TOKEN
+          value: "------------personnal-access-token---------"
+        - name: AZP_POOL
+          value: "---------pool-name-------"
+        resources:
+            limits:
+                cpu: "500m"
+                memory: "1024Mi"
+            requests:
+                cpu: "250m"
+                memory: "512Mi"
